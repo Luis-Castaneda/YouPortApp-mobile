@@ -1,0 +1,322 @@
+/*==============================================
+[Main stylesheet my-app.css]
+
+Author:			WM_Team
+Version:		1.0
+Created:		20 September 2016
+Last updated:	20 September 2016
+Template:		Comida - Restaurant reservations Responsive App Mobile
+================================================*/
+/*
+[Table of Contents]
+
+01. COVER PAGE
+02. LOGIN & REGISTRE & REMEMBER PASSWORD
+03. LEFT MENU
+04. WALKTHROUGH
+05. RESTAURANTS
+06. DETAIL RESTAURANT
+07. FOOD CATEGORIES
+08. RESERVATION FORM
+09. LISTs
+*/
+
+
+
+/*===============================================*/
+/* 01. COVER PAGE	 						     */
+/*===============================================*/
+
+#app-cover {
+	background-image: url(../img/photos/bg-cover.jpg);
+	background-position: center;
+	background-size: cover;
+	color: #FFFFFF;
+	padding: 32px 15px;
+	text-align: center;
+}
+
+.app-cover-content {
+	padding-top: 50px;
+}
+
+/*===============================================*/
+/* 02. LOGIN & REGISTRE & REMEMBER PASSWORD	     */
+/*===============================================*/
+
+
+.page-top-cover {
+	width: 100%;
+	height: 250px;
+	background-image: url(../img/photos/bg-page.jpg);
+	background-position: center;
+	background-size: cover;
+}
+
+.navbar-no-color {
+	background: transparent!important;
+}
+
+.input-icon  {
+	margin-bottom:0px!important;
+}
+
+.input-icon i:before {
+	font-size:26px!important;
+}
+
+.btn-form-group {
+	padding: 0px 15px;
+}
+
+.recover-password {
+	padding: 0px 30px;
+}
+
+.icon-recover i:before {
+	font-size: 70px;
+}
+
+.back-close-icon i:before {
+	font-size: 22px;
+}
+
+
+/*===============================================*/
+/* 03. LEFT MENU	 						     */
+/*===============================================*/
+
+.left-menu-profile i:before {
+	font-size: 18px!important;
+}
+
+.left-menu-profile input[type="text"] {
+	border: 0px;
+	background: #EFEFEF;
+	width: 100%;
+	height: 26px;
+	text-align: center;
+	border-radius: 3px;
+	font-family: "Montserrat"!important;
+}
+
+.left-menu-profile .icon-location i:before {
+	font-size: 10px!important;
+}
+
+.list-menu {
+	margin: 30px 0px!important;
+}
+
+.list-menu i:before {
+	font-size: 20px!important;
+}
+
+/*===============================================*/
+/* 04. WALKTHROUGH	 						     */
+/*===============================================*/
+
+.walkthrough-icon {
+	width: 100px;
+	height: 100px;
+	margin: 60px auto 40px;
+}
+
+.walkthrough-item {
+	padding: 0px 15px;
+}
+
+.slick-dots li button::before {
+	font-size: 20px!important
+}
+
+.slick-dots li {
+    margin: 0 3px!important;
+}
+
+/*===============================================*/
+/* 05. RESTAURANTS	 						     */
+/*===============================================*/
+
+.restaurant {
+	margin-bottom: 40px;
+}
+
+.restaurant-img {
+	width: 100%;
+	height: auto;
+}
+
+.restaurant-grid {
+	margin-bottom: 30px;
+}
+
+.link-deeporange {
+	color: #ff5722!important;
+}
+
+/*===============================================*/
+/* 06. DETAIL RESTAURANT	 				     */
+/*===============================================*/
+
+.tabs-menu {
+	margin: 15px 0px 0px!important;
+}
+
+.tabs-menu a.active{
+	color: #00AAB7!important;
+}
+
+.user-reviews-star {
+	margin: 0px!important;
+	padding: 0px!important;
+}
+
+.user-reviews-star li{
+	display: inline-block;
+	margin-right: 5px;
+}
+
+.gray-star:before{
+	color: gray!important;
+}
+
+.yellow-star:before{
+	color: #FFC107!important;
+}
+
+/*===============================================*/
+/* 07. FOOD CATEGORIES		 				     */
+/*===============================================*/
+
+.principal-category {
+	padding: 10px;
+	display: block;
+	margin-bottom: 13px;
+}
+
+.color-principal-category{
+	
+	color : #FFFBFF;
+	font-size : 10px;
+	
+}
+
+.icon-category:before {
+	font-size: 60px!important;
+}
+
+/*===============================================*/
+/* 08. RESERVATION FORM							 */
+/*===============================================*/
+
+.reservation-cover {
+	background-image: url(../img/photos/bg-reservation.jpg)!important;
+}
+
+.booking-form ul li{
+	margin-bottom: 15px;
+}
+
+/*===============================================*/
+/* 09. LISTs		 						     */
+/*===============================================*/
+
+.content-background {
+	background: #EFEFEF;
+	color: #6d6d72;
+}
+
+.page-list .item-media i:before {
+	font-size: 24px!important;
+	height: 24px!important;
+}
+
+.no-border::after,
+.no-border::before {
+	background: none!important;
+}
+
+.categoria-border{
+	
+	border: solid 1px beige;
+    margin-bottom: 12px;
+    max-height: 170px;
+    min-height: 170px;
+	
+}
+
+/* latin */
+@font-face {
+  font-family: 'Orbitron';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Orbitron-Light'), local('Orbitron-Regular'), url(https://fonts.gstatic.com/s/orbitron/v7/HmnHiRzvcnQr8CjBje6GQvesZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+/* latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v7/zhcz-_WihjSQC0oHJ9TCYPk_vArhqVIZ0nv9q090hN8.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Montserrat-Bold'), url(https://fonts.gstatic.com/s/montserrat/v7/IQHow_FEYlDC4Gzy_m8fcoWiMMZ7xLd792ULpGE4W_Y.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+/* cyrillic */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Playfair Display'), local('PlayfairDisplay-Regular'), url(https://fonts.gstatic.com/s/playfairdisplay/v10/2NBgzUtEeyB-Xtpr9bm1CUR-13DsDU150T1bKbJZejI.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Playfair Display'), local('PlayfairDisplay-Regular'), url(https://fonts.gstatic.com/s/playfairdisplay/v10/2NBgzUtEeyB-Xtpr9bm1CfoVn-aGdXvQRwgLLg-TkDk.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Playfair Display'), local('PlayfairDisplay-Regular'), url(https://fonts.gstatic.com/s/playfairdisplay/v10/2NBgzUtEeyB-Xtpr9bm1Cdhy5e3cTyNKTHXrP9DO-Rc.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Playfair Display Bold'), local('PlayfairDisplay-Bold'), url(https://fonts.gstatic.com/s/playfairdisplay/v10/UC3ZEjagJi85gF9qFaBgIKHabUDGjprROP0Kzi4LtY8.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Playfair Display Bold'), local('PlayfairDisplay-Bold'), url(https://fonts.gstatic.com/s/playfairdisplay/v10/UC3ZEjagJi85gF9qFaBgILCFnVHHm1VfBoEzRr6gqH0.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Playfair Display Bold'), local('PlayfairDisplay-Bold'), url(https://fonts.gstatic.com/s/playfairdisplay/v10/UC3ZEjagJi85gF9qFaBgIIsv7neNnoQYDmljOSnH1QE.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
