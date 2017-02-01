@@ -4,7 +4,7 @@
 * LC
 */
 function categoriasMenuFill(){
-var url="http://192.168.0.101:9090/ServerPHP-YouPort-app/controlYouPort/categorias_menu.php";
+var url="http://acordeit3797.cloudapp.net:9090/ServerPHP-YouPort-app/controlYouPort/categorias_menu.php";
 
 //var urlPath = getUrlImage();
  
@@ -47,7 +47,7 @@ var url="http://192.168.0.101:9090/ServerPHP-YouPort-app/controlYouPort/categori
 * LC
 */
 function principalMenuFill(){
-var url="http://192.168.0.101:9090/ServerPHP-YouPort-app/controlYouPort/principal_menu.php";
+var url="http://acordeit3797.cloudapp.net:9090/ServerPHP-YouPort-app/controlYouPort/principal_menu.php";
 
 //var urlPath = getUrlImage();
  
@@ -89,7 +89,7 @@ var url="http://192.168.0.101:9090/ServerPHP-YouPort-app/controlYouPort/principa
 * LC
 */
 function servicesFill(){
-var url="http://192.168.0.101:9090/ServerPHP-YouPort-app/controlYouPort/services.php";
+var url="http://acordeit3797.cloudapp.net:9090/ServerPHP-YouPort-app/controlYouPort/services.php";
  
 
  
@@ -137,7 +137,7 @@ var url="http://192.168.0.101:9090/ServerPHP-YouPort-app/controlYouPort/services
 * LC
 */
 function servicesFillByOfertas(){
-var url="http://192.168.0.101:9090/ServerPHP-YouPort-app/controlYouPort/servicesByOfertas.php";
+var url="http://acordeit3797.cloudapp.net:9090/ServerPHP-YouPort-app/controlYouPort/servicesByOfertas.php";
  
  //var urlPath = getUrlImage();
  
@@ -190,7 +190,7 @@ $("#idServices").val(id);
 console.debug(id);
 var provincial =geo.getAttribute("value");    
 
-var url="http://192.168.0.101:8080/ServerPHP-YouPort-app/controlYouPort/company-by-idServices.php".concat("?idServices="+id).concat("&provincia=").concat(provincial);
+var url="http://acordeit3797.cloudapp.net:8080/ServerPHP-YouPort-app/controlYouPort/company-by-idServices.php".concat("?idServices="+id).concat("&provincia=").concat(provincial);
 
 
 consolex("\n | desde company_by_idservicesFill - infoLocation: "+ provincial);
@@ -225,7 +225,7 @@ $.getJSON(url,function(result){
 function company_by_idservicesAndOfertasFill(id, name){
 	
 $("#idServices").val(id);
-var url="http://192.168.0.101:9090/ServerPHP-YouPort-app/controlYouPort/company-by-idServicesAndOfertas.php".concat("?idServices="+id);
+var url="http://acordeit3797.cloudapp.net:9090/ServerPHP-YouPort-app/controlYouPort/company-by-idServicesAndOfertas.php".concat("?idServices="+id);
 
 var NameServices = name;
 
@@ -255,7 +255,7 @@ $.getJSON(url,function(result){
 function submenu_by_idMenu(id, name){
 	
 $("#idMenu").val(id);
-var url="http://192.168.0.101:9090/ServerPHP-YouPort-app/controlYouPort/submenu-by-idMenu.php".concat("?idMenu="+id);
+var url="http://acordeit3797.cloudapp.net:9090/ServerPHP-YouPort-app/controlYouPort/submenu-by-idMenu.php".concat("?idMenu="+id);
 
 var NameMenu = name;
 
@@ -289,7 +289,7 @@ $.getJSON(url,function(result){
 function company_details_by_idcompany(id, name, image_url){
 	
 $("#idCompany").val(id);
-var url="http://192.168.0.101:9090/ServerPHP-YouPort-app/controlYouPort/company-details-by-idCompany.php".concat("?idCompany="+id);
+var url="http://acordeit3797.cloudapp.net:9090/ServerPHP-YouPort-app/controlYouPort/company-details-by-idCompany.php".concat("?idCompany="+id);
 
  var NameCompany = name;
  var urlImage = image_url;
@@ -343,7 +343,7 @@ $.getJSON(url,function(result){
 function company_details_by_idcompanyAndOferta(id, name, image_url){
 	
 $("#idCompany").val(id);
-var url="http://192.168.0.101:9090/ServerPHP-YouPort-app/controlYouPort/company-details-by-idCompanyAndOfertas.php".concat("?idCompany="+id);
+var url="http://acordeit3797.cloudapp.net:9090/ServerPHP-YouPort-app/controlYouPort/company-details-by-idCompanyAndOfertas.php".concat("?idCompany="+id);
 
  var NameCompany = name;
  var urlImage = image_url;
@@ -391,7 +391,7 @@ function setServicesId(id){
 * LC
 */
 function getUrlImage(){
-var url="http://192.168.0.101:9090/ServerPHP-YouPort-app/controlYouPort/url_image.php";
+var url="http://acordeit3797.cloudapp.net:9090/ServerPHP-YouPort-app/controlYouPort/url_image.php";
 
 
  $.getJSON(url,function(result){
