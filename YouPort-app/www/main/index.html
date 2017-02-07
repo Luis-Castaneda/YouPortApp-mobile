@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="css/my-app.css">
 </head>
 
-<body class="theme-black" >
+<body class="theme-black">
     <!-- Status bar overlay for fullscreen mode-->
     <div class="statusbar-overlay"></div>
     <!-- Panels overlay-->
@@ -203,7 +203,7 @@
 								<div class="col-50">
 									<a 
                                        
-                                       href="principal-menu.html" class="button button-fill color-black text-thiny" onclick="principalMenuFill();" >INGRESAR</a>
+                                       href="principal-menu.html" onclick="principalMenuFill();" class="button button-fill color-black text-thiny" >INGRESAR</a>
 								</div>
 								<div class="col-50">
 									<a href="#" class="button button-fill color-facebook text-thiny">FACEBOOK</a>
@@ -219,7 +219,7 @@
 									<a 
                                        id="ubicacionButton"
                                        href="#" class="button button-fill color-green text-thiny" 
-                                       onclick="determineCity(eventx)"
+                                       onclick="determineCity(eventx);"
                                        >Ubicacion</a>
 							</div>
                            
@@ -244,6 +244,9 @@
     </div>
 	<!-- Jquery-->
 	<script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
+	
+	<!-- <script type="text/javascript" src="js/cordova.js"></script> -->
+	
 	<!-- Slick Carousel -->
 	<script type="text/javascript" src="js/slick.min.js"></script>
     <!-- Path to Framework7 Library JS-->
@@ -254,10 +257,10 @@
 	<!-- Path to loadData js-->
     <script type="text/javascript" src="js/loadData.js"></script>
     
-   <div id="coordinates" data-lat="10" data-lng="10"></div>
+    <div id="coordinates" data-lat="41.385362" data-lng="2.187886"></div>
     <script type="text/javascript" src="js/location.js"></script>
   
-    
+     
 	
 	<!-- <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script> -->
 

@@ -4,7 +4,7 @@
 * LC
 */
 function categoriasMenuFill(){
-var url="http://192.168.0.101:9090/ServerPHP-YouPort-app/controlYouPort/categorias_menu.php";
+var url="http://acordeit3797.cloudapp.net:9090/ServerPHP-YouPort-app/controlYouPort/categorias_menu.php";
 
 //var urlPath = getUrlImage();
  
@@ -47,7 +47,7 @@ var url="http://192.168.0.101:9090/ServerPHP-YouPort-app/controlYouPort/categori
 * LC
 */
 function principalMenuFill(){
-var url="http://192.168.0.101:9090/ServerPHP-YouPort-app/controlYouPort/principal_menu.php";
+var url="http://acordeit3797.cloudapp.net:9090/ServerPHP-YouPort-app/controlYouPort/principal_menu.php";
 
 //var urlPath = getUrlImage();
  
@@ -71,7 +71,7 @@ var url="http://192.168.0.101:9090/ServerPHP-YouPort-app/controlYouPort/principa
  
  //if($("#"+ultimoRegistro).val() == null){
 	
-	 $("#principal-menu").append("<div class='col-30 menu-principal-creado' id='"+i+"' ><a href="+Url_View+" class='principal-category' onclick=\"categoriasMenuFill(); submenu_by_idMenu('"+Id_Menu+"','"+Name+"') \"><img src="+Url_image_normal+" alt='NOTICIAS' onmouseover=\"changeImageHover(this, '"+Url_image_over+"')\" onmouseout=\"changeImageUnHover(this, '"+Url_image_normal+"')\"><div class='color-principal-category'>"+Name+"</div></a></div>");
+	 $("#principal-menu").append("<div class='col-30 menu-principal-creado' id='"+i+"' ><a href="+Url_View+" class='principal-category' onclick=\"categoriasMenuFill(); submenu_by_idMenu('"+Id_Menu+"','"+Name+"'); company_details_YOUPORT(); \"><img src="+Url_image_normal+" alt='NOTICIAS' onmouseover=\"changeImageHover(this, '"+Url_image_over+"')\" onmouseout=\"changeImageUnHover(this, '"+Url_image_normal+"')\"><div class='color-principal-category'>"+Name+"</div></a></div>");
  //}
   
   
@@ -89,7 +89,7 @@ var url="http://192.168.0.101:9090/ServerPHP-YouPort-app/controlYouPort/principa
 * LC
 */
 function servicesFill(){
-var url="http://192.168.0.101:9090/ServerPHP-YouPort-app/controlYouPort/services.php";
+var url="http://acordeit3797.cloudapp.net:9090/ServerPHP-YouPort-app/controlYouPort/services.php";
  
 
  
@@ -137,7 +137,7 @@ var url="http://192.168.0.101:9090/ServerPHP-YouPort-app/controlYouPort/services
 * LC
 */
 function servicesFillByOfertas(){
-var url="http://192.168.0.101:9090/ServerPHP-YouPort-app/controlYouPort/servicesByOfertas.php";
+var url="http://acordeit3797.cloudapp.net:9090/ServerPHP-YouPort-app/controlYouPort/servicesByOfertas.php";
  
  //var urlPath = getUrlImage();
  
@@ -190,32 +190,44 @@ $("#idServices").val(id);
 console.debug(id);
 var provincial =geo.getAttribute("value");    
 
-var url="http://192.168.0.101:8080/ServerPHP-YouPort-app/controlYouPort/company-by-idServices.php".concat("?idServices="+id).concat("&provincia=").concat(provincial);
-
+var url="http://acordeit3797.cloudapp.net:9090/ServerPHP-YouPort-app/controlYouPort/company-by-idServices.php".concat("?idServices="+id).concat("&provincia=").concat(provincial);
+ 
 
 consolex("\n | desde company_by_idservicesFill - infoLocation: "+ provincial);
 consolex("\n | desde company_by_idservicesFill - url: "+ url);
-    
+var NameServices = name;
+var entro = false;
 $.getJSON(url,function(result){
-
+	
  $.each(result, function(i, field){
+entro = true;
  var urlPath =  field.Value_Parameter; 
  var NameCompany=field.Name;
- var idCompany=field.Id_Company;
+ var idCompany=field.Id_Company;	
  var NameServices = field.Name_Services;
  var urlImage = urlPath + field.Url_Image;
- $("#list-company").append("<li><a href='company-details.html' onclick=\"company_details_by_idcompany('"+idCompany+"','"+NameCompany+"','"+urlImage+"')\" class='item-link'><div class='item-content'><div class='item-media'><img src='img/icon_categorias.svg'/></div><div class='item-inner'><div class='item-title text-small'>"+NameCompany+"</div></div></div></a></li>");		
-							
- });
-    
-  
-/*  isilva: Se comenta por error JS que no consigue  NameServices
- $("#nameServices").append("<div class='max-height-30 min-height-30'>Empresas y servicios</div><div  class='max-height-18 min-height-18' style='font-size : 13px !important;' >"+NameServices+"</div>");		*/
-    
-    
- });
  
+
+ $("#list-company").append("<li><a href='company-details.html' onclick=\"company_details_by_idcompany('"+idCompany+"','"+NameCompany+"','"+urlImage+"')\" class='item-link'><div class='item-content'><div class='item-media'><img src='img/icon_categorias.svg'/></div><div class='item-inner'><div class='item-title text-small'>"+NameCompany+"</div></div></div></a></li>");		
+	
+
+ });
+
+ $("#nameServices").append("<div class='max-height-30 min-height-30'>Empresas y servicios</div><div  class='max-height-18 min-height-18' style='font-size : 13px !important;' >"+NameServices+"</div>");
+ if(!entro){
+		$("#message-no-data").append("<div class='text-medium margin-bottom-15' style='margin-left: 20 px; margin-right : 20px; vertical-align:middle;'><p style = 'color: #DADADA; font-size : 13px; padding-top 10px; text-align:center; vertical-align:middle;'>Actualmente no disponemos de empresas cercanas a su localidad.</p><p style = 'color: #DADADA; font-size : 13px; padding-top 10px; text-align:center; vertical-align:middle;' >¡Disculpe las molestias!</p></div>");		
+	}
+    
+ });
+
 }
+
+
+
+
+
+
+
 
 /*
 **Metodo obtiene las empresas que tienen ofertas mediante un id de servicio, esto lo hace llamando a un servicio PHP
@@ -225,14 +237,15 @@ $.getJSON(url,function(result){
 function company_by_idservicesAndOfertasFill(id, name){
 	
 $("#idServices").val(id);
-var url="http://192.168.0.101:9090/ServerPHP-YouPort-app/controlYouPort/company-by-idServicesAndOfertas.php".concat("?idServices="+id);
+var url="http://acordeit3797.cloudapp.net:9090/ServerPHP-YouPort-app/controlYouPort/company-by-idServicesAndOfertas.php".concat("?idServices="+id);
 
 var NameServices = name;
-
+var entro = false;
 //var urlPath = getUrlImage();
 
 $.getJSON(url,function(result){
 // console.log(result);
+entro = true;
  $.each(result, function(i, field){
  var urlPath = field.Value_Parameter;
  var NameCompany=field.Name;
@@ -243,6 +256,9 @@ $.getJSON(url,function(result){
 							
  });
  $("#nameServices").append("<div class='max-height-30 min-height-30'>Empresas y servicios</div><div  class='max-height-18 min-height-18' style='font-size : 13px !important;' >"+NameServices+"</div>");		
+  if(!entro){
+		$("#message-no-data").append("<div class='text-medium margin-bottom-15' style='margin-left: 20 px; margin-right : 20px; vertical-align:middle;'><p style = 'color: #DADADA; font-size : 13px; padding-top 10px; text-align:center; vertical-align:middle;'>Actualmente no disponemos de empresas cercanas a su localidad.</p><p style = 'color: #DADADA; font-size : 13px; padding-top 10px; text-align:center; vertical-align:middle;' >¡Disculpe las molestias!</p></div>");		
+	}
  });
  
 }
@@ -255,7 +271,7 @@ $.getJSON(url,function(result){
 function submenu_by_idMenu(id, name){
 	
 $("#idMenu").val(id);
-var url="http://192.168.0.101:9090/ServerPHP-YouPort-app/controlYouPort/submenu-by-idMenu.php".concat("?idMenu="+id);
+var url="http://acordeit3797.cloudapp.net:9090/ServerPHP-YouPort-app/controlYouPort/submenu-by-idMenu.php".concat("?idMenu="+id);
 
 var NameMenu = name;
 
@@ -289,7 +305,7 @@ $.getJSON(url,function(result){
 function company_details_by_idcompany(id, name, image_url){
 	
 $("#idCompany").val(id);
-var url="http://192.168.0.101:9090/ServerPHP-YouPort-app/controlYouPort/company-details-by-idCompany.php".concat("?idCompany="+id);
+var url="http://acordeit3797.cloudapp.net:9090/ServerPHP-YouPort-app/controlYouPort/company-details-by-idCompany.php".concat("?idCompany="+id);
 
  var NameCompany = name;
  var urlImage = image_url;
@@ -334,6 +350,47 @@ $.getJSON(url,function(result){
 
 
 
+
+
+/*
+**Metodo obtiene los detalles de la compañia  YOUPORT , esto lo hace llamando a un servicio PHP
+**luego de obtener la data adiciona a cada elemento la informacion correspondiente
+* LC
+*/
+function company_details_YOUPORT(){
+	
+var url="http://acordeit3797.cloudapp.net:9090/ServerPHP-YouPort-app/controlYouPort/company-details-YOUPORT.php";
+
+var urlImage;
+var nameCompany;
+$.getJSON(url,function(result){
+// console.log(result);
+
+ $.each(result, function(i, field){
+	 
+
+ //var idCompany=field.Id_Company;
+ var address = field.Address;
+ var email = field.Email_Contact;
+ var phone = field.Phone_Office_One;
+ //var fax =  field.Fax;
+ var webSite = field.Web_Site;
+ //var enable = field.Enabled;
+ nameCompany = field.Name;
+ urlImage = field.Value_Parameter + field.Url_Image;
+
+
+	$("#content-dinamic").append("<div class='item-text'><p><b>Teléfono : </b>"+phone+"</p><p><b>Email : </b> "+email+"</p><p><b>Dirección  : </b>"+address+"</p></div>");			 
+					
+ });
+	$("#nameCompany").append(nameCompany);		
+	$("#imageCompany").append("<img src='"+urlImage+"' >");		
+ 
+ });
+}
+
+
+
 /*
 **Metodo obtiene los detalles y OFERTA de una compañia mediante el idCompany, esto lo hace llamando a un servicio PHP
 **luego de obtener la data adiciona a cada tab del html la informacion correspondiente
@@ -343,7 +400,7 @@ $.getJSON(url,function(result){
 function company_details_by_idcompanyAndOferta(id, name, image_url){
 	
 $("#idCompany").val(id);
-var url="http://192.168.0.101:9090/ServerPHP-YouPort-app/controlYouPort/company-details-by-idCompanyAndOfertas.php".concat("?idCompany="+id);
+var url="http://acordeit3797.cloudapp.net:9090/ServerPHP-YouPort-app/controlYouPort/company-details-by-idCompanyAndOfertas.php".concat("?idCompany="+id);
 
  var NameCompany = name;
  var urlImage = image_url;
@@ -371,7 +428,7 @@ var entro = 0;
 	entro = entro + 1;	
  }
 	
-	$("#tab1").append("<div class='content-block margin-top-15' style='text-align: justify'><div class='item-inner'><div ><b class='item-text'>Oferta:</b><p class='text-thiny'>"+ofertaName+"</b></div></div><div class='item-inner'><div><b  class='item-text'>Description:</b><p class='text-thiny'>"+ofertaDescription+"</b></div></div><div class='content-block margin-top-15' style='text-align: justify'><div class='item-media'>"+urlImageOferta+"</div></div></div><hr style='color: #0056b2;' />");			 	 
+	$("#tab1").append("<div class='content-block margin-top-15' style='text-align: justify'><div class='item-inner'><div ><p class='text-thiny'><b class='item-text'>"+ofertaName+"</b></p></div></div><div class='item-inner'><div><p class='text-thiny'>"+ofertaDescription+"</p></div></div><div class='content-block margin-top-15' style='text-align: justify'><div class='item-media'>"+urlImageOferta+"</div></div></div><hr style='color: #0056b2;' />");			 	 
 							
  });
 	$("#nameCompany").append(NameCompany);		
@@ -391,7 +448,7 @@ function setServicesId(id){
 * LC
 */
 function getUrlImage(){
-var url="http://192.168.0.101:9090/ServerPHP-YouPort-app/controlYouPort/url_image.php";
+var url="http://acordeit3797.cloudapp.net:9090/ServerPHP-YouPort-app/controlYouPort/url_image.php";
 
 
  $.getJSON(url,function(result){
@@ -416,5 +473,37 @@ $("#list-services-p").bind('DOMNodeInserted', function(e) {
 	alert(id);
 	alert($(element).text());
 });
+
+
+
+ // function onLoad() {
+	 // alert("onLoad");
+        // document.addEventListener("deviceready", onDeviceReady, false);
+    // }
+
+    // // Cordova is loaded and it is now safe to call Cordova methods
+    // //
+    // function onDeviceReady() {
+        // // Register the event listener
+		 // alert("onDeviceReady");
+        // document.addEventListener("backbutton", onBackKeyDown, false);
+    // }
+
+    // // Handle the back button
+    // //
+    // function onBackKeyDown() {
+		// alert("onBackKeyDown");
+		// if($.mobile.activePage.is('#homepage')){
+        // /* 
+         // Event preventDefault/stopPropagation not required as adding backbutton
+          // listener itself override the default behaviour. Refer below PhoneGap link.
+        // */
+        // //e.preventDefault();
+        // navigator.app.exitApp();
+    // }
+    // else {
+        // navigator.app.backHistory();
+    // }
+    // }
 
 

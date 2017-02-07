@@ -5,9 +5,11 @@
         lat: geo.getAttribute("data-lat"),
         lng: geo.getAttribute("data-lng")
         }; 
-    var locationInit = {lat: 0, lng: 0};
 
-    var urlGeo = "https://maps.googleapis.com/maps/api/geocode/json?latlng="+locationLL.lat+","+locationLL.lng+"&key=AIzaSyB6SDV9DN3IWviu9k9fz62Tcd8-t-1552I";
+    var locationInit = {lat: 41.385362, lng: 2.187886};
+
+    var urlGeo = "https://maps.googleapis.com/maps/api/geocode/json?latlng=";
+    var googleAPIKey = "&key=AIzaSyB6SDV9DN3IWviu9k9fz62Tcd8-t-1552I";
     var citiesByProvinciaUrl = "http://localhost:18080/ServerPHP-YouPort-app/controlYouPort/company-by-city.php?provincia=";
     var companiesByIdMenu="http://localhost:8080/ServerPHP-YouPort-app/controlYouPort/submenu-by-idMenu.php?idMenu=";
 
@@ -24,10 +26,12 @@
     var eventx = "event";
     /*************************UBICACION DE GPS**********************/
 
-    var updateLocationText = function(){
+    var updateLocationText = function(showText){
 
-        document.getElementById("ubicacion").innerHTML = "Usted se encuentra en: "+infoLocation;
-
+        
+        if(showText === true){
+            document.getElementById("ubicacion").innerHTML = "Usted se encuentra en: "+infoLocation;
+        }
         geo.setAttribute("data-lat",locationLL.lat);
         geo.setAttribute("data-lng",locationLL.lng);
 
@@ -41,11 +45,12 @@
 
 function getLocation() {
     
-    if (navigator.geolocation && vecesEjecucion === 0) {
+    if (navigator.geolocation) {
         vecesEjecucion++;
+		geo.innerHTML = "Listo geo";
         return navigator.geolocation.getCurrentPosition(showPosition);
     } else {
-        x.innerHTML = "Listo geo";
+        geo.innerHTML = "No creo geo";
     }
     infoLocation = "";
 }
@@ -55,12 +60,9 @@ function showPosition(position) {
     var locationLLShowPosition = {lat: 0, lng: 0};
     locationLL.lat = position.coords.latitude;
     locationLL.lng = position.coords.longitude;
-    
-  /*  x.innerHTML = "Latitude: " + position.coords.latitude + 
-    "<br>Longitude: " + position.coords.longitude; 
-    */
+
     infoLocation = locationLL.lat + "," + locationLL.lng;
-    //updateLocationText();
+    updateLocationText(false);
     infoLocation = "";
     return locationLL;
 }
@@ -71,43 +73,42 @@ function showPosition(position) {
 /********************INICIO DE UBICACION POR GEOINVERSO *****************/
 
 
-    var consolex = function(texto){
-       // console.debug(texto);
-      
+var consolex = function(texto){
+      //  console.debug(texto);
     };
 
 
 var geoAtTheMoment = function(){
-   /*     consolex("\n| Coordenadas hasta el momento: ");
-        consolex("\n| locationLLShowPosition.lat: "+locationLL.lat);
-        consolex("\n| locationLLShowPosition.lng: "+locationLL.lng);*/
+    locationLL = {
+        lat: geo.getAttribute("data-lat"),
+        lng: geo.getAttribute("data-lng")
+        }; 
     return locationLL;
     }
 
 
-
-function getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
-        } else {
-            x.innerHTML = "Geolocation is not supported by this browser.";
-        }
-    }
-
-
+/**
+* Funcion encargada de determinar en que ciudad esta ubicado el usuario
+*
+*/
 function determineCity(event){
 
 
-           consolex("veces de ejecucion: "+vecesEjecucion++);
+     consolex("veces de ejecucion: "+vecesEjecucion++);
 
 
-            consolex("click locationTestButton");
-        getLocation();
-         geoAtTheMoment();
+    consolex("click locationTestButton");
+    getLocation();
+    geoAtTheMoment();
         
+   
+	
+	
+    var urlToGoogle = urlGeo.concat(locationLL.lat).concat(",").concat(locationLL.lng).concat(googleAPIKey);
+    
         
             $.get(
-                urlGeo, 
+                urlToGoogle, 
                 function(data, status){
                     datax = data;
                     statusx = status;
@@ -130,7 +131,9 @@ function determineCity(event){
 
 
 
-
+/*
+* Funcion encargado de llamar el API de Google maps con las coorde
+*/
 function   whereIam(){
       consolex("llamando 24 whereIam al : "+ urlGeo);
         var myJSON = JSON.stringify(datax);
@@ -153,14 +156,16 @@ function   whereIam(){
         }
 
 
-        /*document.getElementById("ubicacion").innerHTML = "Usted se encuentra en: "+infoLocation;*/
-        updateLocationText();
-        //consolex("infoLocation: "+ infoLocation);    
+     
+        updateLocationText(true);
+     
     }
 
 
 
-
+/*
+* Funcion que inicializa el mapa de google
+*/ 
 var initMap = function() {
         // Create a map object and specify the DOM element for display.
         var map = new google.maps.Map(document.getElementById('locationTest'), {
@@ -174,7 +179,9 @@ var initMap = function() {
       };
 
 
-
+/*
+* Funcion dummy para realizar busqueda filtrada de empresas
+*/
 var lookForCompanies = function(){
     
 consolex("\n | llamando 30 lookForCompanies al : "+ citiesByProvinciaUrl+infoLocation);
@@ -197,36 +204,51 @@ consolex("\n | llamando 30 lookForCompanies al : "+ citiesByProvinciaUrl+infoLoc
 };
 
 
-//NO SIRVE
-jQuery.when(getLocation()).done(determineCity(eventx));
-//jQuery.when(determineCity).done();
+/*
+* Funcion que permite realizar el concatenamiento de la provincia en un URL
+*/
+var addGeoLocationToURL = function(url){
+   
+    var provincia =geo.getAttribute("value");    
     
+    url = url.concat("&provincia=").concat(provincia)
+    
+   consolex("\n | desde addGeoLocationToURL - infoLocation: "+ provincia);
+   consolex("\n | desde addGeoLocationToURL - url: "+ url);   
+    
+    return url;
+}
+
+var waitUntilGeoIsReady = function(){
+	
+	while(locationLL.lat === 10 && locationLL.lng === 10){
+		geoAtTheMoment();
+		setTimeout(function(){consolex('en espera que geo esta listo')},2000);
+	}
+	if(locationLL.lat !== 10 && locationLL.lng !== 10){
+		determineCity(eventx);	
+	}
+}
+
+/*
+document.addEventListener("DOMContentLoaded", getLocation());
+document.addEventListener("onCordovaReady", getLocation());
+document.addEventListener("onPluginsReady", getLocation());*/
+document.addEventListener("deviceready", getLocation());
+//NO SIRVE
+//jQuery.when(getLocation()).done(waitUntilGeoIsReady());
+ 
+
+
+ 
+
+
+   
 /********************FIN DE UBICACION POR GEOINVERSO *****************/
 
-/*document.getElementById("ubicacionDiv")
-    .addEventListener("click", determineCity);*/
-/* NO ELIMINAR
-jQuery("#ubicacionButton").click(function(event){
-        event.stopPropagation();
-        consolex("The span element was clicked.");
-    });
-*/
 
-
-
-
-
-
-
-//$(document).ready(function(){
-//    consolex("llamando la funcion ready!!!");
-    
-   // geoAtTheMoment();
-  
-//});
-
-
-
+	//document.addEventListener('deviceready', function(){alert('dispositivo listo');});
+//getLocation();
 
 
 

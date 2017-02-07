@@ -14,7 +14,6 @@
         PhoneGap Team
     </author>
     <content src="/main/index.html" />
-    <icon src="logo.png" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
